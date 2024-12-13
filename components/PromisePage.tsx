@@ -7,16 +7,14 @@ interface PromisePageProps {
   content: string;
 }
 
-interface Line {
-  text: string;
-  opacity: number;
-}
-
 const PromisePage = ({ title, content }: PromisePageProps) => {
-  const [lines, setLines] = useState<Line[]>([]);
+  const [opacities, setOpacities] = useState<number[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
   const fadeSpeed = 50;
+
+  // 줄 배열을 미리 생성
+  const lines = content.split("\n").filter((line) => line.trim() !== "");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,7 +22,7 @@ const PromisePage = ({ title, content }: PromisePageProps) => {
         setIsVisible(entry.isIntersecting);
       },
       {
-        threshold: 0.5, // 50% 이상 보일 때 실행
+        threshold: 0.5,
       }
     );
 
@@ -36,63 +34,48 @@ const PromisePage = ({ title, content }: PromisePageProps) => {
   }, []);
 
   useEffect(() => {
-    if (!isVisible) {
-      setLines([]);
-      return;
-    }
+    // 모든 줄의 opacity를 0으로 초기화
+    setOpacities(new Array(lines.length).fill(0));
 
-    const contentLines = content
-      .split("\n")
-      .filter((line) => line.trim() !== "")
-      .map((text) => ({ text, opacity: 0 }));
+    if (!isVisible) return;
 
     let currentLineIndex = 0;
     let isActive = true;
 
-    const addNewLine = () => {
-      if (currentLineIndex < contentLines.length) {
-        setLines((prevLines) => {
-          const newLines = [...prevLines];
-          if (currentLineIndex === newLines.length) {
-            newLines.push({
-              text: contentLines[currentLineIndex].text,
-              opacity: 0,
-            });
-          }
-          return newLines;
-        });
-
-        let opacity = 0;
+    const fadeInLine = () => {
+      if (currentLineIndex < lines.length && isActive) {
         const fadeInterval = setInterval(() => {
-          if (!isActive || opacity >= 1) {
+          if (!isActive) {
             clearInterval(fadeInterval);
-            if (opacity >= 1) {
-              currentLineIndex++;
-              if (currentLineIndex < contentLines.length) {
-                addNewLine();
-              }
-            }
             return;
           }
 
-          opacity = Math.min(opacity + 0.1, 1);
-          setLines((prevLines) => {
-            const newLines = [...prevLines];
-            if (newLines[currentLineIndex]) {
-              newLines[currentLineIndex].opacity = opacity;
+          setOpacities((prev) => {
+            const next = [...prev];
+            const currentOpacity = next[currentLineIndex];
+
+            if (currentOpacity >= 1) {
+              clearInterval(fadeInterval);
+              currentLineIndex++;
+              if (currentLineIndex < lines.length) {
+                fadeInLine();
+              }
+              return next;
             }
-            return newLines;
+
+            next[currentLineIndex] = Math.min(currentOpacity + 0.1, 1);
+            return next;
           });
         }, fadeSpeed);
       }
     };
 
-    addNewLine();
+    fadeInLine();
 
     return () => {
       isActive = false;
     };
-  }, [content, isVisible]);
+  }, [isVisible, lines.length]);
 
   return (
     <div className="promise-page" ref={elementRef}>
@@ -103,11 +86,11 @@ const PromisePage = ({ title, content }: PromisePageProps) => {
             <p
               key={index}
               style={{
-                opacity: line.opacity,
+                opacity: opacities[index] || 0,
                 transition: "opacity 0.05s ease-in-out",
               }}
             >
-              {line.text}
+              {line}
             </p>
           ))}
         </div>

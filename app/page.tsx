@@ -1,6 +1,7 @@
 "use client";
 
 import PromisePage from "@/components/PromisePage";
+import ScrollToTop from "@/components/ScrollToTop";
 
 interface Promise {
   id: number;
@@ -88,6 +89,7 @@ export default function Home() {
           content={promise.content}
         />
       ))}
+      <ScrollToTop />
     </main>
   );
 }
