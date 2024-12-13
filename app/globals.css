@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,5 +19,56 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.app {
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.promise-page {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.promise-content {
+  max-width: 800px;
+  width: 90%;
+  text-align: center;
+}
+
+.promise-content h2 {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+}
+
+.promise-content p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5em;
+}
+
+/* 모바일 반응형 스타일 */
+@media (max-width: 768px) {
+  .promise-content {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .promise-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .promise-content p {
+    font-size: 1rem;
+  }
 }

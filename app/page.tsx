@@ -1,101 +1,93 @@
-import Image from "next/image";
+"use client";
+
+import PromisePage from "@/components/PromisePage";
+
+interface Promise {
+  id: number;
+  title: string;
+  content: string;
+}
+
+const promises: Promise[] = [
+  {
+    id: 0,
+    title: "공 약",
+    content: `안녕하세요! 제3대 고양특례시 테니스협회 회장 후보 백금선입니다.
+
+    저는 8년간 덕양구 테니스연합회장으로 활동하며 쌓은 경험과 도덕적 일관성을 바탕으로, 
+    테니스 동호인들의 권리와 이익을 최우선으로 고려하는 협회장이 되겠습니다.
+    
+    안정적이고 투명한 협회 운영을 목표로 하며, 아래의 사업들을 추진하고자 합니다.
+    
+    저에게 힘을 실어주셔서 함께 발전하는 고양특례시테니스협회를 만들어 나갈 수 있기를 부탁드립니다.`,
+  },
+  {
+    id: 1,
+    title: "공약 1",
+    content: `개인은 시설관리공단(성사는 실내코트 제외 50%) 및 공공기관 코트를 이용하도록 협의할 예정입니다. 
+이를 통해 예약의 불편함을 완전히 해소하고 클럽 위주의 협회로 발전하겠습니다. 
+또한, 각 위수탁코트의 시설물에 대한 요구사항(라이트, 샤워시설, 가지치기 등)을 적극 수용하여 개선하겠습니다.`,
+  },
+  {
+    id: 2,
+    title: "공약 2",
+    content: `고양시, 시의원, 도의원, 국회의원과의 원활한 소통을 통해 관내 테니스장을 증설하고, 
+    비활용 중인 공공기관의 코트를 협의하여 충분한 테니스 코트를 확보하겠습니다.
+`,
+  },
+  {
+    id: 3,
+    title: "공약 3",
+    content: `자문 변호사와 협약을 맺어 아파트 단지의 분쟁 클럽이 직면한 문제를 해결하기 위해 노력하겠습니다.
+또한, 소규모 클럽의 대회 참가 시 우승할 경우 1년간 3명의 분리 출전을 허용하는 방안을 개선하겠습니다.
+`,
+  },
+  {
+    id: 4,
+    title: "공약 4",
+    content: `고양특례시테니스협회 홈페이지에 등록된 회원의 자격을 검토하고 예약자 및 실 이용자를 관리하여, 
+위수탁 코트 외의 다른 코트에 대해서는 관내 주민들의 접근성을 유지하고, 타 시도 주민의 사용을 통제함으로써
+ 지역  주민들의 민원을 최소화하도록  하겠습니다.`,
+  },
+  {
+    id: 5,
+    title: "공약 5",
+    content: `회원들의 개인 점수를 투명하게 공개하고 데이터베이스화하여 경기 중 회원 점수를 명확히 관리하겠습니다.`,
+  },
+  {
+    id: 6,
+    title: "공약 6",
+    content: `각 지부(3구) 테니스연합회에 지원금 배분과 코트비 할인 등의 지원을 통해 연합회의 재정적 안정을 확보하고,
+ 이를 통해 회원들에게 실질적인 혜택(참가비, 상금, 상품)을 제공하겠습니다.`,
+  },
+  {
+    id: 7,
+    title: "공약 7",
+    content: `상금을 증액하고 지역 할당(10%)을 보장하는 전국대회를 개최하며, 지역 신인부를 신설하여 고양시 회원의 대회 참여 기회를 확대하겠습니다.`,
+  },
+  {
+    id: 8,
+    title: "공약 8",
+    content: `각 지부(3구)에서 능력 있고 테니스에 진심인 임원을 선출하여 서로의 의견을 존중하고 화합된 협회를 운영하겠습니다. 
+또한, 사무국장의 업무를 총무와 재무로 분리하고 반기 회계 공개를 통해 투명한 협회 운영을 실현하겠습니다.`,
+  },
+  {
+    id: 9,
+    title: "공약 9",
+    content: `협찬, 수익 사업, 민간 후원, 기업 출연, 정부 지원, 기금 유치 등을 통해 재정을 확보하고, 회원들에게 공평하고 많은 혜택을 제공하겠습니다.`,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <main className="app">
+      {promises.map((promise) => (
+        <PromisePage
+          key={promise.id}
+          title={promise.title}
+          content={promise.content}
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      ))}
+    </main>
   );
 }
