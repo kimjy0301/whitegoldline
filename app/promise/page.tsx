@@ -64,8 +64,10 @@ const PromisePage = () => {
             </p>
             <br />
             <br />
-            <p className="text-right"> 제 3대 고양특례시테니스협회 회장후보</p>
-            <p className="text-right"> 백금선 올림</p>
+            <p className="text-right font-semibold">
+              제 3대 고양특례시테니스협회 회장후보
+            </p>
+            <p className="text-right font-semibold"> 백금선 올림</p>
 
             <div className="mt-8 flex justify-center">
               <a
