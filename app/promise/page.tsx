@@ -2,15 +2,15 @@
 
 const PromisePage = () => {
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
-      <div className="mx-auto bg-white w-[21cm] h-auto p-[2cm] shadow-lg">
-        <h1 className="text-2xl font-bold text-center mb-8">
+    <div className="min-h-screen bg-gray-100 py-4 sm:py-8 px-4 sm:px-0">
+      <div className="mx-auto bg-white w-full sm:w-[21cm] h-auto p-4 sm:p-[2cm] shadow-lg">
+        <h1 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">
           제3대 고양특례시테니스협회 회장후보 백금선 공약
         </h1>
 
         <div className="space-y-6">
           <section>
-            <p className="text-base leading-relaxed">
+            <p className="text-sm sm:text-base leading-relaxed">
               안녕하세요! 제3대 고양특례시테니스협회 회장 후보 백금선입니다.
               <br />
               <br />
@@ -64,19 +64,21 @@ const PromisePage = () => {
             </p>
             <br />
             <br />
-            <p className="text-right font-semibold">
+            <p className="text-right font-semibold text-sm sm:text-base">
               제 3대 고양특례시테니스협회 회장후보
             </p>
-            <p className="text-right font-semibold"> 백금선 올림</p>
+            <p className="text-right font-semibold text-sm sm:text-base">
+              백금선 올림
+            </p>
 
             <div className="mt-8 flex justify-center">
               <a
                 href="/files/고양특례시_테니스협회장후보_공약.pdf"
                 download
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out flex items-center"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out flex items-center text-sm sm:text-base"
               >
                 <svg
-                  className="w-5 h-5 mr-2"
+                  className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
