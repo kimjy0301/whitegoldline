@@ -6,7 +6,7 @@ const PromisePage = () => {
       <div className="mx-auto bg-white w-full sm:w-[21cm] h-auto p-4 sm:p-[2cm] shadow-lg">
         <h1 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">
           제3대 고양특례시테니스협회<br></br>회장후보 기호{" "}
-          <span className="text-blue-500 text-2xl sm:text-3xl">2</span> 번
+          <span className="text-blue-600 text-2xl sm:text-3xl">3</span> 번
           백금선 공약
         </h1>
 
