@@ -1,7 +1,6 @@
 "use client";
 
-import PromisePage from "@/components/PromisePage";
-import ScrollToTop from "@/components/ScrollToTop";
+import PromisePage from "@/app/promise/page";
 
 interface Promise {
   id: number;
@@ -82,14 +81,15 @@ const promises: Promise[] = [
 export default function Home() {
   return (
     <main className="app">
-      {promises.map((promise) => (
+      {/* {promises.map((promise) => (
         <PromisePage
           key={promise.id}
           title={promise.title}
           content={promise.content}
         />
       ))}
-      <ScrollToTop />
+      <ScrollToTop /> */}
+      <PromisePage />
     </main>
   );
 }
