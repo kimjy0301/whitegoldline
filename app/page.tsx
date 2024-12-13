@@ -2,12 +2,6 @@
 
 import PromisePage from "@/app/promise/page";
 
-interface Promise {
-  id: number;
-  title: string;
-  content: string;
-}
-
 // const promises: Promise[] = [
 //   {
 //     id: 0,
