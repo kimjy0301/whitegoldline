@@ -66,6 +66,29 @@ const PromisePage = () => {
             <br />
             <p className="text-right"> 제 3대 고양특례시테니스협회 회장후보</p>
             <p className="text-right"> 백금선 올림</p>
+
+            <div className="mt-8 flex justify-center">
+              <a
+                href="/files/고양특례시_테니스협회장후보_공약.pdf"
+                download
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out flex items-center"
+              >
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+                첨부파일 다운로드
+              </a>
+            </div>
           </section>
         </div>
       </div>
